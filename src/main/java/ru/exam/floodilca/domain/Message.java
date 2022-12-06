@@ -14,10 +14,10 @@ public class Message {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    @NotBlank(message = "Please fill the message")
-    @Length(max = 2048, message = "Message too long (more than 2kB)")
+    @NotBlank(message = "Пожалуйста, заполните сообщение")
+    @Length(max = 2048, message = "Сообщение слишком длинное (максимум 2000 символов)")
     private String text;
-    @Length(max = 255, message = "Message too long (more than 255)")
+    @Length(max = 255, message = "Тег слишком длинный (максимум 255 символов)")
     private String tag;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -47,51 +47,27 @@ public class Message {
         return MessageHelper.getAuthorName(author);
     }
 
-    public User getAuthor() {
-        return author;
-    }
+    public User getAuthor() { return author; }
 
-    public void setAuthor(User author) {
-        this.author = author;
-    }
+    public void setAuthor(User author) { this.author = author; }
 
-    public void setText(String text) {
-        this.text = text;
-    }
+    public void setText(String text) { this.text = text; }
 
-    public String getText() {
-        return text;
-    }
+    public String getText() { return text; }
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setId(Long id) { this.id = id; }
 
-    public String getTag() {
-        return tag;
-    }
+    public String getTag() { return tag; }
 
-    public void setTag(String tag) {
-        this.tag = tag;
-    }
+    public void setTag(String tag) { this.tag = tag; }
 
-    public String getFilename() {
-        return filename;
-    }
+    public String getFilename() { return filename; }
 
-    public Set<User> getLikes() {
-        return likes;
-    }
+    public Set<User> getLikes() { return likes; }
 
-    public void setLikes(Set<User> likes) {
-        this.likes = likes;
-    }
+    public void setLikes(Set<User> likes) { this.likes = likes; }
 
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
+    public void setFilename(String filename) { this.filename = filename; }
 }

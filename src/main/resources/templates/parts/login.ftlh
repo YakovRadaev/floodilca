@@ -1,11 +1,11 @@
 <#macro login path isRegisterForm>
     <form action="${path}" method="post">
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">User Name :</label>
+            <label class="col-sm-2 col-form-label">Имя пользователя :</label>
             <div class="col-sm-6">
                 <input type="text" name="username" value="<#if user??>${user.username}</#if>"
                        class="form-control ${(usernameError??)?string('is-invalid', '')}"
-                       placeholder="User name" />
+                       placeholder="Логин" />
                 <#if usernameError??>
                     <div class="invalid-feedback">
                         ${usernameError}
@@ -14,11 +14,11 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Password:</label>
+            <label class="col-sm-2 col-form-label">Пароль :</label>
             <div class="col-sm-6">
                 <input type="password" name="password"
                        class="form-control ${(passwordError??)?string('is-invalid', '')}"
-                       placeholder="Password" />
+                       placeholder="**********" />
                 <#if passwordError??>
                     <div class="invalid-feedback">
                         ${passwordError}
@@ -28,11 +28,11 @@
         </div>
         <#if isRegisterForm>
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Password:</label>
+                <label class="col-sm-2 col-form-label">Подтверждение :</label>
                 <div class="col-sm-6">
                     <input type="password" name="password2"
                            class="form-control ${(password2Error??)?string('is-invalid', '')}"
-                           placeholder="Retype password" />
+                           placeholder="**********" />
                     <#if password2Error??>
                         <div class="invalid-feedback">
                             ${password2Error}
@@ -41,11 +41,11 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Email:</label>
+                <label class="col-sm-2 col-form-label">Е-майл :</label>
                 <div class="col-sm-6">
                     <input type="email" name="email" value="<#if user??>${user.email}</#if>"
                            class="form-control ${(emailError??)?string('is-invalid', '')}"
-                           placeholder="some@some.com" />
+                           placeholder="mail@mail.ru" />
                     <#if emailError??>
                         <div class="invalid-feedback">
                             ${emailError}
@@ -53,24 +53,24 @@
                     </#if>
                 </div>
             </div>
-            <div class="col-sm-6">
-                <div class="g-recaptcha" data-sitekey="6LduQVoUAAAAAD8hypySNroht_6UnzhoQRV3QIWc"></div>
-                <#if captchaError??>
-                    <div class="alert alert-danger" role="alert">
-                        ${captchaError}
-                    </div>
-                </#if>
-            </div>
+<#--            <div class="col-sm-6">-->
+<#--                <div class="g-recaptcha-response" data-sitekey="6LcpiVIjAAAAAH7fQ2khETKRGiNcp92p6aPcjHNL"></div>-->
+<#--                <#if captchaError??>-->
+<#--                    <div class="alert alert-danger" role="alert">-->
+<#--                        ${captchaError}-->
+<#--                    </div>-->
+<#--                </#if>-->
+<#--            </div>-->
         </#if>
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <#if !isRegisterForm><a href="/registration">Add new user</a></#if>
-        <button class="btn btn-primary" type="submit"><#if isRegisterForm>Create<#else>Sign In</#if></button>
+        <#if !isRegisterForm><a class="btn btn-primary" href="/registration">Добавиться</a></#if>
+        <button class="btn btn-primary" type="submit"><#if isRegisterForm>Создать<#else>Войти</#if></button>
     </form>
 </#macro>
 
-<#macro logout>
-    <form action="/logout" method="post">
-        <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <button class="btn btn-primary" type="submit"><#if user??>Sign Out<#else>Log in</#if></button>
-    </form>
-</#macro>
+<#--<#macro logout>-->
+<#--    <form action="/logout" method="post">-->
+<#--        <input type="hidden" name="_csrf" value="${_csrf.token}" />-->
+<#--        <button class="btn btn-primary" type="submit"><#if user??>Выйти<#else>Войти</#if></button>-->
+<#--    </form>-->
+<#--</#macro>-->

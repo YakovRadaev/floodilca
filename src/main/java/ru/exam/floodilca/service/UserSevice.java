@@ -34,7 +34,7 @@ public class UserSevice implements UserDetailsService {
         User user = userRepo.findByUsername(username);
 
         if (user == null) {
-            throw new UsernameNotFoundException("User not found");
+            throw new UsernameNotFoundException("Пользователь с таким именем не найден");
         }
 
         return user;
@@ -62,14 +62,15 @@ public class UserSevice implements UserDetailsService {
     private void sendMessage(User user) {
         if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
-                    "Hello, %s! \n" +
-                            "Welcome to Sweater. Please, visit next link: http://%s/activate/%s",
+                    "Здравствуйте, %s! \n" +
+                            "Добро пожаловать на <Мембастик>. \n" + 
+							"Для подтверждения регистрации перейдите по ссылке: http://%s/activate/%s",
                     user.getUsername(),
                     hostname,
                     user.getActivationCode()
             );
 
-            mailSender.send(user.getEmail(), "Activation code", message);
+            mailSender.send(user.getEmail(), "Код активации", message);
         }
     }
 

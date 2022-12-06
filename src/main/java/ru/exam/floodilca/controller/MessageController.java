@@ -31,7 +31,7 @@ import java.util.UUID;
 
 @Controller
 public class MessageController {
-    @Autowired
+	@Autowired
     private MessageRepo messageRepo;
 
     @Autowired
