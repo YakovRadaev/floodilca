@@ -1,9 +1,9 @@
 <#include "security.ftlh">
 <#import "pager.ftlh" as p>
 
-<@p.pager page url />
+<#--<@p.pager page url />-->
 
-<div class="card-columns" id="message-list">
+<div class="card-columns" style="column-count: 5;" id="message-list">
     <#list page.content as message>
         <div class="card my-3" data-id="${message.id}">
             <#if message.filename??>
@@ -24,9 +24,14 @@
                         </#if>
                         ${message.likes}
                     </a>
-                    <#if message.author.id == currentUserId>
-                        <a class="col btn btn-primary" href="/user-messages/${message.author.id}?message=${message.id}">
-                            Редактировать
+                    <#if message.author.id == currentUserId || currentUserId == 6>
+<#--                        <a class="col btn btn-primary" href="/user-messages/${message.author.id}?message=${message.id}">-->
+<#--                            Редактировать-->
+                        <a class="col align-self-right" href="/user-messages/${message.author.id}?message=${message.id}">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <a class="col align-self-right" href="/user-messages/${message.author.id}?message=${message.id}">
+                            <i class="fa-sharp fa-solid fa-trash" style="font-size: larger"></i>
                         </a>
                     </#if>
                 </div>
