@@ -1,8 +1,6 @@
 <#include "security.ftlh">
 <#import "pager.ftlh" as p>
 
-<#--<@p.pager page url />-->
-
 <div class="card-columns" style="column-count: 5;" id="message-list">
     <#list page.content as message>
         <div class="card my-3" data-id="${message.id}">

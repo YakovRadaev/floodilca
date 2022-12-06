@@ -2,21 +2,30 @@
 
 <@c.page>
     Список пользователей :
-
-    <table class="tabel">
-        <thead class="thead">
+    <table class="table">
+        <thead class="thead-dark">
         <tr>
             <th scope="col">Логин</th>
             <th scope="col">Роль</th>
-            <th></th>
+            <th scope="col">Е-майл</th>
+            <th scope="col">Редактировать</th>
+            <th scope="col">Выдать бан</th>
         </tr>
         </thead>
         <tbody>
         <#list users as user>
             <tr>
-                <td>${user.username}</td>
+                <th scope="row">${user.username}</th>
                 <td><#list user.roles as role>${role}<#sep>, </#list></td>
-                <td><a href="/user/${user.id}">редактировать</a></td>
+                <td>${user.email}</td>
+                <td><a href="/user/${user.id}">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                </td>
+                <td><a href="/user/${user.id}">
+                        <i class="fa-solid fa-user-slash"></i>
+                    </a>
+                </td>
             </tr>
         </#list>
         </tbody>
