@@ -92,8 +92,9 @@ public class UserSevice implements UserDetailsService {
         return userRepo.findAll();
     }
 
-    public void saveUser(User user, String username, Map<String, String> form) {
+    public void saveUser(User user, String username, Boolean active, Map<String, String> form) {
         user.setUsername(username);
+        user.setActive(active);
 
         Set<String> roles = Arrays.stream(Role.values())
                 .map(Role::name)

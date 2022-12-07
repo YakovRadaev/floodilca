@@ -31,6 +31,7 @@ public class UserController {
     public String userEditForm(@PathVariable User user, Model model) {
         model.addAttribute("user", user);
         model.addAttribute("roles", Role.values());
+        model.addAttribute("active", user.isActive());
 
         return "userEdit";
     }
@@ -40,9 +41,10 @@ public class UserController {
     public String userSave(
             @RequestParam String username,
             @RequestParam Map<String, String> form,
+            @RequestParam Boolean active,
             @RequestParam("userId") User user
     ) {
-        userSevice.saveUser(user, username, form);
+        userSevice.saveUser(user, username, active, form);
 
         return "redirect:/user";
     }
