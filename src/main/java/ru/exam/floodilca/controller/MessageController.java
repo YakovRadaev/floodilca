@@ -72,6 +72,7 @@ public class MessageController {
             @RequestParam("file") MultipartFile file
     ) throws IOException {
         message.setAuthor(user);
+        message.setStatus(true);
 
         if (bindingResult.hasErrors()) {
             Map<String, String> errorsMap = ControllerUtils.getErrors(bindingResult);
@@ -140,7 +141,7 @@ public class MessageController {
             @RequestParam("tag") String tag,
             @RequestParam("file") MultipartFile file
     ) throws IOException {
-        if (message.getAuthor().equals(currentUser)) {
+        if (message.getAuthor().equals(currentUser) || message.getAuthor().equals("ADMIN")) {
             if (!StringUtils.isEmpty(text)) {
                 message.setText(text);
             }

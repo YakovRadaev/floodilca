@@ -26,6 +26,8 @@ public class Message {
 
     private String filename;
 
+    private Boolean status;
+
     @ManyToMany
     @JoinTable(
             name = "message_likes",
@@ -70,4 +72,12 @@ public class Message {
     public void setLikes(Set<User> likes) { this.likes = likes; }
 
     public void setFilename(String filename) { this.filename = filename; }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
 }

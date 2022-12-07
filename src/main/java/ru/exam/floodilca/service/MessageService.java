@@ -17,7 +17,8 @@ public class MessageService {
         if (filter != null && !filter.isEmpty()) {
             return messageRepo.findByTag(filter, pageable, user);
         } else {
-            return messageRepo.findAll(pageable, user);
+            return messageRepo.findByStatus(pageable, user);
+//            return messageRepo.findAll(pageable, user);
         }
     }
 

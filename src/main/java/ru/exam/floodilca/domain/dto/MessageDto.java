@@ -10,6 +10,8 @@ public class MessageDto {
     private String tag;
     private User author;
     private String filename;
+
+    private Boolean status;
     private Long likes;
     private Boolean meLiked;
 
@@ -19,6 +21,7 @@ public class MessageDto {
         this.tag = message.getTag();
         this.author = message.getAuthor();
         this.filename = message.getFilename();
+        this.status = message.getStatus();
         this.likes = likes;
         this.meLiked = meLiked;
     }
@@ -45,6 +48,10 @@ public class MessageDto {
 
     public String getFilename() {
         return filename;
+    }
+
+    public Boolean getStatus() {
+        return status;
     }
 
     public Long getLikes() {
