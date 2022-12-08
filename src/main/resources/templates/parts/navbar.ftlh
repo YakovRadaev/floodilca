@@ -2,7 +2,7 @@
 <#import "login.ftlh" as l>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-    <a class="navbar-brand" href="/">Мембастик</a>
+    <a class="navbar-brand" href="/greeting">Мембастик</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,7 +14,8 @@
 <#--            </li>-->
             <#if user??>
                 <li class="nav-item">
-                    <a class="nav-link" href="/main">Сообщения</a>
+<#--                    <a class="nav-link" href="/main">Сообщения</a>-->
+                    <a class="nav-link" href="/">Сообщения</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/user-messages/${currentUserId}">Мои сообщения</a>

@@ -63,7 +63,6 @@ public class UserSevice implements UserDetailsService {
         if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
                     "Здравствуйте, %s! \n" +
-                            "Добро пожаловать на <Мембастик>. \n" + 
 							"Для подтверждения регистрации перейдите по ссылке: http://%s/activate/%s",
                     user.getUsername(),
                     hostname,

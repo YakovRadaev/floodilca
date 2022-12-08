@@ -40,28 +40,74 @@ public class MessageController {
     @Value("${upload.path}")
     private String uploadPath;
 
-    @GetMapping("/")
+    @GetMapping("/greeting")
     public String greeting(Map<String, Object> model) {
         return "greeting";
     }
+//
+//    @GetMapping("/main")
+//    public String main(
+//            @RequestParam(required = false, defaultValue = "") String filter,
+//            Model model,
+//            @PageableDefault(sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable,
+//            @AuthenticationPrincipal User user
+//    ) {
+//        Page<MessageDto> page = messageService.messageList(pageable, filter, user);
+//
+//        model.addAttribute("page", page);
+//        model.addAttribute("url", "/main");
+//        model.addAttribute("filter", filter);
+//
+//        return "main";
+//    }
+//@PostMapping("/main")
+//public String add(
+//        @AuthenticationPrincipal User user,
+//        @Valid Message message,
+//        BindingResult bindingResult,
+//        Model model,
+//        @RequestParam(required = false, defaultValue = "") String filter,
+//        @PageableDefault(sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable,
+//        @RequestParam("file") MultipartFile file
+//) throws IOException {
+//    message.setAuthor(user);
+//    message.setStatus(true);
+//
+//    if (bindingResult.hasErrors()) {
+//        Map<String, String> errorsMap = ControllerUtils.getErrors(bindingResult);
+//
+//        model.mergeAttributes(errorsMap);
+//        model.addAttribute("message", message);
+//    } else {
+//        saveFile(message, file);
+//
+//        model.addAttribute("message", null);
+//
+//        messageRepo.save(message);
+//    }
+//
+//    Page<MessageDto> page = messageService.messageList(pageable, filter, user);
+//    model.addAttribute("page", page);
+//
+//    return "main";
+//}
 
-    @GetMapping("/main")
-    public String main(
-            @RequestParam(required = false, defaultValue = "") String filter,
-            Model model,
-            @PageableDefault(sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable,
-            @AuthenticationPrincipal User user
-    ) {
-        Page<MessageDto> page = messageService.messageList(pageable, filter, user);
+    @GetMapping("/")
+public String main(
+        @RequestParam(required = false, defaultValue = "") String filter,
+        Model model,
+        @PageableDefault(sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable,
+        @AuthenticationPrincipal User user
+) {
+    Page<MessageDto> page = messageService.messageList(pageable, filter, user);
 
-        model.addAttribute("page", page);
-        model.addAttribute("url", "/main");
-        model.addAttribute("filter", filter);
+    model.addAttribute("page", page);
+    model.addAttribute("url", "/main");
+    model.addAttribute("filter", filter);
 
-        return "main";
-    }
-
-    @PostMapping("/main")
+    return "main";
+}
+    @PostMapping("/")
     public String add(
             @AuthenticationPrincipal User user,
             @Valid Message message,
@@ -92,6 +138,7 @@ public class MessageController {
 
         return "main";
     }
+
 
     private void saveFile(@Valid Message message, @RequestParam("file") MultipartFile file) throws IOException {
         if (file != null && !file.getOriginalFilename().isEmpty()) {

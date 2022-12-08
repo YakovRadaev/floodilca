@@ -1,5 +1,6 @@
 package ru.exam.floodilca.config;
 
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import ru.exam.floodilca.service.UserSevice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -22,6 +23,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring()
+                .antMatchers("/scripts/**")
+                .antMatchers("/styles/**")
+                .antMatchers("/img/**")
+                .antMatchers("/fonts/**");
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
