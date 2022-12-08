@@ -1,6 +1,5 @@
 <#import "parts/common.ftlh" as c>
 <#import "parts/login.ftlh" as l>
-<#--<#import "parts/security.ftlh" as s>-->
 
 <@c.page>
     <div class="form-row">
@@ -11,9 +10,8 @@
             </form>
         </div>
     </div>
-<#--<#if currentUserId == -1>-->
+
     <#include "parts/messageEdit.ftlh" />
-<#--</#if>-->
     <#include "parts/messageList.ftlh" />
 
 </@c.page>

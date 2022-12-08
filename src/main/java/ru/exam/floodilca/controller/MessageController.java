@@ -40,9 +40,9 @@ public class MessageController {
     @Value("${upload.path}")
     private String uploadPath;
 
-    @GetMapping("/greeting")
+    @GetMapping("/about")
     public String greeting(Map<String, Object> model) {
-        return "greeting";
+        return "about";
     }
 //
 //    @GetMapping("/main")

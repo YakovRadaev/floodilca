@@ -1,7 +1,8 @@
 <#import "parts/common.ftlh" as c>
 
 <@c.page>
-    <h5>${username}</h5>
+    <div class="mb-5">
+    <h4>${username}</h4>
     ${message?ifExists}
     <form method="post">
         <div class="form-group row">
@@ -19,4 +20,5 @@
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
         <button class="btn btn-primary" type="submit">Сохранить</button>
     </form>
+    </div>
 </@c.page>

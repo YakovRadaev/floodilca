@@ -14,7 +14,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <div class="card-title">Мои подписчики</div>
+                    <div class="card-title">Подписан на :</div>
                     <h3 class="card-text">
                         <a href="/user/subscriptions/${userChannel.id}/list">${subscriptionsCount}</a>
                     </h3>
@@ -24,7 +24,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <div class="card-title">Мои подписки</div>
+                    <div class="card-title">Подписчики :</div>
                     <h3 class="card-text">
                         <a href="/user/subscribers/${userChannel.id}/list">${subscribersCount}</a>
                     </h3>
