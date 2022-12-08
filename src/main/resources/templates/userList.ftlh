@@ -1,15 +1,15 @@
 <#import "parts/common.ftlh" as c>
 
 <@c.page>
-    Список пользователей :
-    <table class="table">
+    <h4 m-1>Список пользователей :</h4>
+    <table class="table table-hover table-responsive-lg">
         <thead class="thead-dark">
         <tr>
-            <th scope="col">Логин</th>
-            <th scope="col">Роль</th>
-            <th scope="col">Е-майл</th>
-            <th scope="col">Статус</th>
-            <th scope="col">Редактировать</th>
+            <th style="width: 30%">Логин</th>
+            <th style="width: 10%" scope="col">Роль</th>
+            <th style="width: 30%" scope="col">Е-майл</th>
+            <th style="width: 15%" scope="col">Статус</th>
+            <th style="width: 15%" scope="col">Редактировать</th>
         </tr>
         </thead>
         <tbody>

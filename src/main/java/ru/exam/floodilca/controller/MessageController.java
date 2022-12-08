@@ -111,7 +111,7 @@ public class MessageController {
     }
 
     @GetMapping("/user-messages/{author}")
-    public String userMessges(
+    public String userMessages(
             @AuthenticationPrincipal User currentUser,
             @PathVariable User author,
             Model model,
@@ -173,6 +173,31 @@ public class MessageController {
             likes.add(currentUser);
         }
 
+        UriComponents components = UriComponentsBuilder.fromHttpUrl(referer).build();
+
+        components.getQueryParams()
+                .entrySet()
+                .forEach(pair -> redirectAttributes.addAttribute(pair.getKey(), pair.getValue()));
+
+        return "redirect:" + components.getPath();
+    }
+
+//    @GetMapping("/messages/{message}/delete")
+//    public String removeMessage(
+//            @PathVariable Message message,
+//            RedirectAttributes redirectAttributes
+//    ) {
+//        message.setStatus(false);
+//        return "redirect:/main/";
+//    }
+    @GetMapping("/messages/{message}/delete")
+    public String removeMessage(
+            @AuthenticationPrincipal User currentUser,
+            @PathVariable Message message,
+            RedirectAttributes redirectAttributes,
+            @RequestHeader(required = false) String referer
+    ) {
+        message.setStatus(false);
         UriComponents components = UriComponentsBuilder.fromHttpUrl(referer).build();
 
         components.getQueryParams()

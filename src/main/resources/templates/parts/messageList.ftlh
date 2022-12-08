@@ -28,7 +28,9 @@
                         <a class="col align-self-right" href="/user-messages/${message.author.id}?message=${message.id}">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
-                        <a class="col align-self-right" href="/user-messages/${message.author.id}?message=${message.id}">
+<#--                        "/messages/{message}/delete"-->
+                        <a class="col align-self-right" href="/messages/${message.id}/delete/">
+<#--                        <a class="col align-self-right" href="/user-messages/${message.author.id}?message=${message.id}">-->
                             <i class="fa-sharp fa-solid fa-trash" style="font-size: larger"></i>
                         </a>
                     </#if>
