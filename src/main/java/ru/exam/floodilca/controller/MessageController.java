@@ -102,7 +102,7 @@ public String main(
     Page<MessageDto> page = messageService.messageList(pageable, filter, user);
 
     model.addAttribute("page", page);
-    model.addAttribute("url", "/main");
+    model.addAttribute("url", "/");
     model.addAttribute("filter", filter);
 
     return "main";

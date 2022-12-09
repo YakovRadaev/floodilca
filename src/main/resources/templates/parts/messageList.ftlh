@@ -1,7 +1,7 @@
 <#include "security.ftlh">
 <#import "pager.ftlh" as p>
 
-<div class="card-columns" style="column-count: 5;" id="message-list">
+<div class="card-columns" style="column-count: 4;" id="message-list">
     <#list page.content as message>
         <div class="card my-3" data-id="${message.id}">
             <#if message.filename??>

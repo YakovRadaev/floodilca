@@ -91,9 +91,12 @@ public class UserSevice implements UserDetailsService {
         return userRepo.findAll();
     }
 
-    public void saveUser(User user, String username, Boolean active, Map<String, String> form) {
+    public void saveUser(User user, String username, Boolean active, String password, Map<String, String> form) {
         user.setUsername(username);
         user.setActive(active);
+        if (!StringUtils.isEmpty(password)) {
+            user.setPassword(passwordEncoder.encode(password));
+        }
 
         Set<String> roles = Arrays.stream(Role.values())
                 .map(Role::name)
@@ -125,7 +128,8 @@ public class UserSevice implements UserDetailsService {
         }
 
         if (!StringUtils.isEmpty(password)) {
-            user.setPassword(password);
+            user.setPassword(passwordEncoder.encode(password));
+//            user.setPassword(password);
         }
 
         userRepo.save(user);
