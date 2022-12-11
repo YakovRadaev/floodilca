@@ -190,19 +190,22 @@ public String main(
         model.addAttribute("message", message);
         return "editMessage";
     }
-    @PostMapping("/messages/{message}/edit")
+    @PostMapping("/messages/{message}/save")
     public String messageSave(
-            @RequestParam("id") Message message,
-            @RequestParam("text") String text,
-            @RequestParam("tag") String tag,
-            @RequestParam("file") MultipartFile file
+            @RequestParam("id") Message message
+            , @RequestParam("text") String text
+            , @RequestParam("tag") String tag
+            , @RequestParam("file") MultipartFile file
     ) throws IOException {
-            if (!StringUtils.isEmpty(text)) {
-                message.setText(text);
-            }
-            if (!StringUtils.isEmpty(tag)) {
-                message.setTag(tag);
-            }
+
+//            if (!StringUtils.isEmpty(text)) {
+//                message.setText(text);
+//            }
+//            if (!StringUtils.isEmpty(tag)) {
+//                message.setTag(tag);
+//            }
+            message.setTag(tag);
+            message.setText(text);
             saveFile(message, file);
             messageRepo.save(message);
         return "redirect:/";

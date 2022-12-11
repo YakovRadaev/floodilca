@@ -26,7 +26,7 @@
                     <#if message.author.id == currentUserId || currentUserId == 6>
 <#--                        <a class="col btn btn-primary" href="/user-messages/${message.author.id}?message=${message.id}">-->
 <#--                            Редактировать-->
-                        <a class="col align-self-right" href="/${message.id}/edit">
+                        <a class="col align-self-right" href="/messages/${message.id}/edit">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
 <#--                        "/messages/{message}/delete"-->
