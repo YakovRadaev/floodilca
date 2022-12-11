@@ -1,0 +1,17 @@
+body {
+    background: radial-gradient(SkyBlue, LightBlue);
+}
+
+tbody {
+    display:block;
+    max-height:40%;
+    overflow-y:auto;
+}
+thead, tbody tr {
+    display:table;
+    width: calc( 100% - 1.5em );
+    table-layout:fixed;
+}
+thead {
+    width: 100%;
+}

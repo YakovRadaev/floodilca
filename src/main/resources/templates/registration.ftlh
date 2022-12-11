@@ -2,7 +2,7 @@
 <#import "parts/login.ftlh" as l>
 
 <@c.page>
-Добавить нового пользователя
-${message}
-<@l.login "/registration" />
+    <div class="mb-1">Форма добавления нового пользователя</div>
+    ${message?ifExists}
+    <@l.login "/registration" true />
 </@c.page>

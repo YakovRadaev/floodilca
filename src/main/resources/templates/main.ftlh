@@ -2,31 +2,32 @@
 <#import "parts/login.ftlh" as l>
 
 <@c.page>
-    <div>
-        <@l.logout />
-        <span><a href="/user">Список пользователей</a></span>
-    </div>
-    <div>
-        <form method="post">
-            <input type="hidden" name="_csrf" value="${_csrf.token}" />
-            <input type="text" name="text" placeholder="Введите сообщение..." />
-            <input type="text" name="tag" placeholder="Тэг">
-            <button type="submit">Добавить</button>
-        </form>
-    </div>
-    <div>Список сообщений</div>
-    <form method="get" action="/main">
-        <input type="text" name="filter" value="${filter}">
-        <button type="submit">Найти</button>
-    </form>
-    <#list messages as message>
-        <div>
-            <b>${message.id}</b>
-            <span>${message.text}</span>
-            <i>${message.tag}</i>
-            <strong>${message.authorName}</strong>
+    <div class="form-row">
+        <div class="form-group col-md-8 mt-5">
+            <form method="get" action="/" class="form-inline">
+                <input type="text" name="filter" class="form-control" value="${filter?ifExists}" placeholder="Поиск по тегам" />
+                <button type="submit" class="btn btn-primary ml-2">Поиск</button>
+            </form>
         </div>
-        <#else>
-            Нет сообщений
-    </#list>
+        <div class="form-group col-md-4 mt-5">
+            <form method="get" action="/" class="form-inline">
+                <select class="form-control" name="sorter">
+<#--                    <option value="" selected disabled hidden>Выбрать статус</option>-->
+                    <option value="by id">по дате</option>
+                    <option value="by username">по автору</option>
+                </select>
+                <select class="form-control" name="vector">
+                    <#--                    <option value="" selected disabled hidden>Выбрать статус</option>-->
+                    <option value="ASC">по возростанию</option>
+                    <option value="DESC">по убыванию</option>
+                </select>
+<#--                <input type="text" name="filter" class="form-control" value="${filter?ifExists}" placeholder="Поиск по тегам" />-->
+                <button type="submit" class="btn btn-primary ml-2">Сортировать</button>
+            </form>
+        </div>
+    </div>
+
+    <#include "parts/messageEdit.ftlh" />
+    <#include "parts/messageList.ftlh" />
+
 </@c.page>
