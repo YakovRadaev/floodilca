@@ -1,6 +1,7 @@
 <#include "security.ftlh">
 <#import "pager.ftlh" as p>
 
+<@p.pager page url />
 <div class="card-columns" style="column-count: 4;" id="message-list">
     <#list page.content as message>
         <div class="card my-3" data-id="${message.id}">
@@ -25,7 +26,7 @@
                     <#if message.author.id == currentUserId || currentUserId == 6>
 <#--                        <a class="col btn btn-primary" href="/user-messages/${message.author.id}?message=${message.id}">-->
 <#--                            Редактировать-->
-                        <a class="col align-self-right" href="/user-messages/${message.author.id}?message=${message.id}">
+                        <a class="col align-self-right" href="/${message.id}/edit">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
 <#--                        "/messages/{message}/delete"-->

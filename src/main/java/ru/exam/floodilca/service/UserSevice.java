@@ -129,7 +129,6 @@ public class UserSevice implements UserDetailsService {
 
         if (!StringUtils.isEmpty(password)) {
             user.setPassword(passwordEncoder.encode(password));
-//            user.setPassword(password);
         }
 
         userRepo.save(user);

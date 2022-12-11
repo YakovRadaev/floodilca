@@ -7,7 +7,7 @@
         <label for="username">Текущий логин : </label>
         <input type="text" name="username" value="${user.username}" />
         <label for="password">Сменить пароль : </label>
-        <input type="text" name="password" value="***" />
+        <input type="text" name="password" placeholder="Поле ввода пароля"/>
 
         <#list roles as role>
             <div>
