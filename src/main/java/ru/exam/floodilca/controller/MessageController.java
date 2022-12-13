@@ -50,14 +50,18 @@ public class MessageController {
     @GetMapping("/")
 public String main(
         @RequestParam(required = false, defaultValue = "") String filter,
+        @RequestParam(required = false, defaultValue = "") String sorter,
         Model model,
-        @PageableDefault(sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable,
+
+//        @PageableDefault(sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable,
+        @PageableDefault(size = 50) Pageable pageable,
         @AuthenticationPrincipal User user
 ) {
-    Page<MessageDto> page = messageService.messageList(pageable, filter, user);
+    Page<MessageDto> page = messageService.messageList(pageable, filter, sorter, user);
     model.addAttribute("page", page);
     model.addAttribute("url", "/");
     model.addAttribute("filter", filter);
+    model.addAttribute("sorter", sorter);
     return "main";
 }
     @PostMapping("/")
@@ -67,7 +71,9 @@ public String main(
             BindingResult bindingResult,
             Model model,
             @RequestParam(required = false, defaultValue = "") String filter,
-            @PageableDefault(sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable,
+            @RequestParam(required = false, defaultValue = "") String sorter,
+//            @PageableDefault(sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable,
+            @PageableDefault() Pageable pageable,
             @RequestParam("file") MultipartFile file
     ) throws IOException {
         message.setAuthor(user);
@@ -81,10 +87,10 @@ public String main(
             model.addAttribute("message", null);
             messageRepo.save(message);
         }
-        Page<MessageDto> page = messageService.messageList(pageable, filter, user);
+        Page<MessageDto> page = messageService.messageList(pageable, filter, sorter, user);
         model.addAttribute("page", page);
         model.addAttribute("filter", filter);
-
+        model.addAttribute("sorter", sorter);
         return "main";
     }
 
@@ -111,7 +117,9 @@ public String main(
             @PathVariable User author,
             Model model,
             @RequestParam(required = false) Message message,
-            @PageableDefault(sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable
+
+            @PageableDefault() Pageable pageable
+//            sort = { "id" }, direction = Sort.Direction.DESC
     ) {
         Page<MessageDto> page = messageService.messageListForUser(pageable, author, currentUser);
 
@@ -197,13 +205,6 @@ public String main(
             , @RequestParam("tag") String tag
             , @RequestParam("file") MultipartFile file
     ) throws IOException {
-
-//            if (!StringUtils.isEmpty(text)) {
-//                message.setText(text);
-//            }
-//            if (!StringUtils.isEmpty(tag)) {
-//                message.setTag(tag);
-//            }
             message.setTag(tag);
             message.setText(text);
             saveFile(message, file);

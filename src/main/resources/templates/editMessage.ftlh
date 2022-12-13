@@ -25,7 +25,7 @@
                         <label for="author">Текущее изображение : </label>
         <#--            <input type="text" class="form-control" name="image" value="${message.authorName}" readonly/>-->
                         <#if message.filename??>
-                            <img src="/img/${message.filename}" class="card-img-top" />
+                            <img src="/img/${message.filename}" class="card-img-top" id="imgedit"/>
                         </#if>
             </div>
         </div>
