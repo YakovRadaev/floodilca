@@ -25,6 +25,6 @@ public interface MessageRepo extends CrudRepository<Message, Long> {
     @Query("select new ru.exam.floodilca.domain.dto.MessageDto(m, count(ml), sum(case when ml = :user then 1 else 0 end) > 0) from Message m left join m.likes ml WHERE UPPER(m.tag) LIKE CONCAT('%',UPPER(:tag),'%') AND m.status = true group by m order by count(ml) DESC")
     Page<MessageDto>findByTagSortByLikesDesc(Pageable pageable, @Param("tag") String tag, @Param("user") User user);
 
-    @Query("select new ru.exam.floodilca.domain.dto.MessageDto(m, count(ml), sum(case when ml = :user then 1 else 0 end) > 0) from Message m left join m.likes ml where m.author = :author and m.status = true group by m")
+    @Query("select new ru.exam.floodilca.domain.dto.MessageDto(m, count(ml), sum(case when ml = :user then 1 else 0 end) > 0) from Message m left join m.likes ml where m.author = :author and m.status = true group by m order by m.id DESC")
     Page<MessageDto> findByUser(Pageable pageable, @Param("author") User author, @Param("user") User user);
 }

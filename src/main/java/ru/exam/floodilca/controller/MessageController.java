@@ -54,7 +54,7 @@ public String main(
         Model model,
 
 //        @PageableDefault(sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable,
-        @PageableDefault(size = 50) Pageable pageable,
+        @PageableDefault(size = 5) Pageable pageable,
         @AuthenticationPrincipal User user
 ) {
     Page<MessageDto> page = messageService.messageList(pageable, filter, sorter, user);
@@ -117,8 +117,7 @@ public String main(
             @PathVariable User author,
             Model model,
             @RequestParam(required = false) Message message,
-
-            @PageableDefault() Pageable pageable
+            @PageableDefault(size = 5) Pageable pageable
 //            sort = { "id" }, direction = Sort.Direction.DESC
     ) {
         Page<MessageDto> page = messageService.messageListForUser(pageable, author, currentUser);
@@ -131,6 +130,8 @@ public String main(
         model.addAttribute("message", message);
         model.addAttribute("isCurrentUser", currentUser.equals(author));
         model.addAttribute("url", "/user-messages/" + author.getId());
+        model.addAttribute("filter", "");
+        model.addAttribute("sorter", "");
 
         return "userMessages";
     }

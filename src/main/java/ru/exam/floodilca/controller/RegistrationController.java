@@ -74,7 +74,7 @@ public class RegistrationController {
         }
 
         if (!userSevice.addUser(user)) {
-            model.addAttribute("usernameError", "Логин занял! Выберите другой или войдите под своей учетной записью");
+            model.addAttribute("usernameError", "Логин занят! Выберите другой или войдите под своей учетной записью");
             return "registration";
         }
 
